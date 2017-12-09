@@ -37,6 +37,7 @@ public class MyTasksAdapter extends RecyclerView.Adapter<MyTasksAdapter.TaskView
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         String description = tasks.get(position).getDescription();
         holder.bind(position,description);
+        holder.itemView.setTag(position);
     }
 
     @Override

@@ -6,10 +6,16 @@ package com.farminator.farminator;
 
 public class Task {
     private String username,description;
+    private int id;
 
-    public Task(String d,String u){
+    public Task(int i,String d,String u){
+        id = i;
         username = u;
         description = d;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getUsername(){
@@ -18,5 +24,9 @@ public class Task {
 
     public String getDescription(){
         return description;
+    }
+
+    public void setUsername(String u){
+        username = u;
     }
 }

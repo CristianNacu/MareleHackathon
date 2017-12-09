@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
@@ -67,7 +68,23 @@ public class TasksActivity extends AppCompatActivity {
         availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
         rvAvailableTasks.setAdapter(availableTasksAdapter);
 
-        //Log in Prefferences
+        //Swiping for available tasks
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                int id = (int)viewHolder.itemView.getTag();
+                Utils.claimTask(id,username);
+                //refresh lists
+                refreshTasks();
+            }
+
+            //COMPLETED (11) attach the ItemTouchHelper to the waitlistRecyclerView
+        }).attachToRecyclerView(rvAvailableTasks);
 
     }
 
@@ -89,6 +106,16 @@ public class TasksActivity extends AppCompatActivity {
         return true;
     }
 
+    public void refreshTasks(){
+        myTasks = Utils.getMyTasks(username);
+        myTasksAdapter = new MyTasksAdapter(this, myTasks);
+        rvMyTasks.setAdapter(myTasksAdapter);
+
+        availableTasks = Utils.getAvailableTasks();
+        availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
+        rvAvailableTasks.setAdapter(availableTasksAdapter);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -96,13 +123,7 @@ public class TasksActivity extends AppCompatActivity {
 
         switch (itemId) {
             case R.id.action_refresh:
-                myTasks = Utils.getMyTasks(username);
-                myTasksAdapter = new MyTasksAdapter(this, myTasks);
-                rvMyTasks.setAdapter(myTasksAdapter);
-
-                availableTasks = Utils.getAvailableTasks();
-                availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
-                rvAvailableTasks.setAdapter(availableTasksAdapter);
+                refreshTasks();
                 return true;
             case R.id.action_logout:
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
