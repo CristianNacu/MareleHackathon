@@ -1,9 +1,15 @@
 package com.farminator.farminator;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +43,11 @@ public class TasksActivity extends AppCompatActivity {
             password = b.getString("password");
         }
         String message = "Hello, "+username;
-        tvUsername.setText(message);
+
+        SpannableString spanString = new SpannableString(message);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+
+        tvUsername.setText(spanString);
 
         //My tasks RecyclerView
         myTasks = Utils.getMyTasks(username);
@@ -57,8 +67,6 @@ public class TasksActivity extends AppCompatActivity {
 
     }
 
-    boolean doubleBackToExitPressedOnce = false;
-
     @Override
     public void onBackPressed() {
         if (backPressed + 300 > System.currentTimeMillis()){
@@ -71,4 +79,30 @@ public class TasksActivity extends AppCompatActivity {
         }
         backPressed = System.currentTimeMillis();
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+
+        switch (itemId) {
+            case R.id.action_refresh:
+                myTasks = Utils.getMyTasks(username);
+                myTasksAdapter = new MyTasksAdapter(this, myTasks);
+                rvMyTasks.setAdapter(myTasksAdapter);
+
+                availableTasks = Utils.getAvailableTasks();
+                availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
+                rvAvailableTasks.setAdapter(availableTasksAdapter);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
+

@@ -9,4 +9,5 @@
     <string name="default_description">Default description</string>
     <string name="your_tasks">Your tasks:</string>
     <string name="available_tasks">Available tasks:</string>
+    <string name="action_refresh">Refresh</string>
 </resources>
