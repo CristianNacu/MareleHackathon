@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <HBox prefHeight="475.0" prefWidth="910.0">
+         <children>
+            <GridPane fx:id="gridPane" prefHeight="475.0" prefWidth="312.0">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></GridPane>
+            <VBox prefHeight="475.0" prefWidth="323.0">
+               <children>
+                  <ChoiceBox fx:id="choiceBoxType" prefHeight="68.0" prefWidth="323.0" value="iarba" />
+                  <ImageView fx:id="imageViewType" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <CheckBox fx:id="checkBoxCreator" mnemonicParsing="false" prefHeight="101.0" prefWidth="325.0" text="CheckBox">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></CheckBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="475.0" prefWidth="283.0" />
+         </children>
+      </HBox>
+   </children>
+</Pane>
