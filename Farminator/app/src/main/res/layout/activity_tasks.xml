@@ -21,6 +21,11 @@
             android:text="@string/hello"
             android:textSize="22sp" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_my_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

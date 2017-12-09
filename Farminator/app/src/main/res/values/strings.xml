@@ -5,4 +5,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="hello">Hello!</string>
+    <string name="default_number">-1</string>
+    <string name="default_description">Default description</string>
 </resources>
