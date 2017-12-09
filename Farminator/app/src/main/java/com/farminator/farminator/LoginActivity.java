@@ -6,12 +6,16 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.farminator.farminator.utils.ServerRequest;
 import com.farminator.farminator.utils.Utils;
+
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
     EditText et_username;
@@ -33,7 +37,8 @@ public class LoginActivity extends AppCompatActivity {
                 String username = et_username.getText().toString();
                 String password = et_password.getText().toString();
 
-                if(Utils.checkUser(username,password)) {
+                if(Utils.checkUser(username,password)){
+
                     logIn(username,password);
                 }
                 else
@@ -49,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         if(Utils.checkUser(username,password)){
             logIn(username,password);
         }
-
     }
 
     private void setupSharedPreferences() {
@@ -59,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void logIn(String username,String password){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("username", username);
         editor.putString("password", password);

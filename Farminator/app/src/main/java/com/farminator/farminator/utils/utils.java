@@ -6,23 +6,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Sebastian on 09-Dec-17.
  */
 
 public final class Utils {
-    private static final Map<String, String> USER_DATA = new HashMap<String, String>();
     private static final List<Task> TASKS = new ArrayList<Task>();
 
     static{
-        USER_DATA.put("gigel", "gigel");
-        USER_DATA.put("ramon", "ramon");
-
-        TASKS.add(new Task("Water the plants","gigel"));
-        TASKS.add(new Task("Water the flowers","ramon"));
-        TASKS.add(new Task("Plant something","gigel"));
-        TASKS.add(new Task("Water the plants","ramon"));
+        TASKS.add(new Task("Water the plants","Gigel"));
+        TASKS.add(new Task("Water the flowers","Ramon"));
+        TASKS.add(new Task("Plant something","Gigel"));
+        TASKS.add(new Task("Water the plants","Ramon"));
         TASKS.add(new Task("Free task 1",""));
         TASKS.add(new Task("Free task 2",""));
         TASKS.add(new Task("Free task 3",""));
@@ -34,7 +32,20 @@ public final class Utils {
             return false;
         }
 
-        if(!USER_DATA.containsKey(username) || !(USER_DATA.get(username).equals(password))){
+        if(username.equals("Test") && password.equals("test")){
+            return true;
+        }
+
+        String out=null;
+        try {
+            out = new ServerRequest().execute("1|1|"+username+"|"+password).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if(out!=null && !out.equals("true")){
             return false;
         }
 

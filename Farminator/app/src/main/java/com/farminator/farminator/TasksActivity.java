@@ -104,6 +104,13 @@ public class TasksActivity extends AppCompatActivity {
                 availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
                 rvAvailableTasks.setAdapter(availableTasksAdapter);
                 return true;
+            case R.id.action_logout:
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("username", "");
+                editor.putString("password", "");
+                editor.apply();
+                finish();
         }
 
         return super.onOptionsItemSelected(item);
