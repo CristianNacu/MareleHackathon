@@ -1,4 +1,4 @@
-package com.example.cristi.farminator;
+package com.farminator.farminator;
 
 import org.junit.Test;
 
