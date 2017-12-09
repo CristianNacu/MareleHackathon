@@ -30,7 +30,7 @@ public final class Utils {
     }
 
     public static boolean checkUser(String username,String password){
-        if(username.isEmpty() || password.isEmpty()){
+        if(username==null || password==null || username.isEmpty() || password.isEmpty()){
             return false;
         }
 

@@ -1,6 +1,8 @@
 package com.farminator.farminator;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,7 +44,7 @@ public class TasksActivity extends AppCompatActivity {
             username = b.getString("username");
             password = b.getString("password");
         }
-        String message = "Hello, "+username;
+        String message = "Hello, " + username;
 
         SpannableString spanString = new SpannableString(message);
         spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
@@ -64,6 +66,8 @@ public class TasksActivity extends AppCompatActivity {
         rvAvailableTasks.setLayoutManager(layoutManager2);
         availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
         rvAvailableTasks.setAdapter(availableTasksAdapter);
+
+        //Log in Prefferences
 
     }
 
