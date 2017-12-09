@@ -50,7 +50,7 @@ public final class Utils {
         return l;
     }
 
-    public static List<Task> getFreeTasks(){
+    public static List<Task> getAvailableTasks(){
         List<Task> l = new ArrayList<>();
         for(Task e:TASKS){
             if(e.getUsername().isEmpty())

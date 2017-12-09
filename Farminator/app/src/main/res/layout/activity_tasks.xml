@@ -15,16 +15,51 @@
             android:id="@+id/tv_hello"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/hello"
             android:textSize="22sp" />
+
+        <TextView
+        android:id="@+id/tv_my_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/your_tasks"
+        android:textSize="22sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_my_tasks"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/tv_available_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/available_tasks"
+            android:textSize="22sp"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_available_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:overScrollMode="never"/>
 
     </LinearLayout>
 

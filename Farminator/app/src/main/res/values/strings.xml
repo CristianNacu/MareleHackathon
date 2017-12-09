@@ -7,4 +7,6 @@
     <string name="hello">Hello!</string>
     <string name="default_number">-1</string>
     <string name="default_description">Default description</string>
+    <string name="your_tasks">Your tasks:</string>
+    <string name="available_tasks">Available tasks:</string>
 </resources>

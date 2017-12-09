@@ -57,7 +57,7 @@ public class MyTasksAdapter extends RecyclerView.Adapter<MyTasksAdapter.TaskView
         }
 
         void bind(int index, String description) {
-            numberTextView.setText(index);
+            numberTextView.setText(String.valueOf(index+1));
             descriptionTextView.setText(description);
         }
 

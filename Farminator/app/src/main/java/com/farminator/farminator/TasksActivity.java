@@ -17,9 +17,12 @@ public class TasksActivity extends AppCompatActivity {
     private String password;
     private long backPressed=0;
     private TextView tvUsername;
-    private RecyclerView rvMyTasks ;
+    private RecyclerView rvMyTasks;
+    private RecyclerView rvAvailableTasks;
     private MyTasksAdapter myTasksAdapter;
+    private MyTasksAdapter availableTasksAdapter;
     private List<Task> myTasks;
+    private List<Task> availableTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +39,22 @@ public class TasksActivity extends AppCompatActivity {
         String message = "Hello, "+username;
         tvUsername.setText(message);
 
-        /*
-        //RecyclerView
+        //My tasks RecyclerView
         myTasks = Utils.getMyTasks(username);
         rvMyTasks = findViewById(R.id.rv_my_tasks);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvMyTasks.setLayoutManager(layoutManager);
         myTasksAdapter = new MyTasksAdapter(this, myTasks);
         rvMyTasks.setAdapter(myTasksAdapter);
-        */
+
+        //Available tasks RecyclerView
+        availableTasks = Utils.getAvailableTasks();
+        rvAvailableTasks = findViewById(R.id.rv_available_tasks);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
+        rvAvailableTasks.setLayoutManager(layoutManager2);
+        availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
+        rvAvailableTasks.setAdapter(availableTasksAdapter);
+
     }
 
     boolean doubleBackToExitPressedOnce = false;
