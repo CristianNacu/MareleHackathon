@@ -6,12 +6,21 @@ package com.farminator.farminator;
 
 public class Task {
     private String username,description;
-    private int id;
+    private int id,X,Y;
 
-    public Task(int i,String d,String u){
+    public Task(int i,String d,String u,int x,int y){
         id = i;
         username = u;
         description = d;
+        X=x;
+        Y=y;
+    }
+
+    public int getX(){
+        return X;}
+
+    public int getY(){
+        return Y;
     }
 
     public int getId(){

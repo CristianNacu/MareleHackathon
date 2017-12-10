@@ -63,8 +63,8 @@ public final class MyUtils {
         try {
         String a[] = out.split(";");
 
-            for (int i = 0; i < a.length; i += 2) {
-                l.add(new Task(Integer.parseInt(a[i]), a[i + 1], username));
+            for (int i = 0; i < a.length; i += 4) {
+                l.add(new Task(Integer.parseInt(a[i]), a[i + 1],username,Integer.parseInt(a[i+2]),Integer.parseInt(a[i+3])));
             }
         }
         catch (NumberFormatException e){
@@ -90,9 +90,8 @@ public final class MyUtils {
         List<Task> l = new ArrayList<>();
         try {
         String a[] = out.split(";");
-
-            for (int i = 0; i < a.length; i += 2) {
-                l.add(new Task(Integer.parseInt(a[i]), a[i + 1], ""));
+            for (int i = 0; i < a.length; i += 4) {
+                l.add(new Task(Integer.parseInt(a[i]), a[i + 1],"",Integer.parseInt(a[i+2]),Integer.parseInt(a[i+3])));
             }
         }
         catch (NumberFormatException e){

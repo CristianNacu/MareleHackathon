@@ -37,7 +37,8 @@ public class MyTasksAdapter extends RecyclerView.Adapter<MyTasksAdapter.TaskView
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         Task t = tasks.get(position);
         String description = t.getDescription();
-        holder.bind(position,description);
+        String coordinates = ""+t.getX()+" "+t.getY();
+        holder.bind(position,description,coordinates);
         holder.itemView.setTag(t.getId());
     }
 
@@ -51,16 +52,19 @@ public class MyTasksAdapter extends RecyclerView.Adapter<MyTasksAdapter.TaskView
         //
         TextView descriptionTextView;
         TextView numberTextView;
+        TextView positionTextView;
 
         TaskViewHolder(View itemView) {
             super(itemView);
             descriptionTextView = itemView.findViewById(R.id.name_text_view);
             numberTextView = itemView.findViewById(R.id.number_text_view);
+            positionTextView = itemView.findViewById(R.id.position_text_view);
         }
 
-        void bind(int index, String description) {
+        void bind(int index, String description,String coordinates) {
             numberTextView.setText(String.valueOf(index+1));
             descriptionTextView.setText(description);
+            positionTextView.setText(coordinates);
         }
 
     }

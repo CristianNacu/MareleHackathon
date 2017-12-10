@@ -35,6 +35,8 @@ public class TileService {
     private void importTilesFromDB() {
         try {
             String result = ClientTcp.makeRequest(ClientTcp.requestCodes.get("AllTiles"));
+            if (result == null)
+                return;
             String[] cimpanzei = result.split(";");
             for (int i = 0; i < cimpanzei.length; i++) {
                double x=Double.parseDouble(cimpanzei[i++]);

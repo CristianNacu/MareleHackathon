@@ -15,12 +15,12 @@ public class Task {
     private Integer userID;
 
     public Task(int id,String d, String sd, String ed, int s, int idTile, Integer uid){
-        id = id;
+        this.id = id;
         description = d;
         startDate = sd;
         endDate = ed;
         state = s;
-        idTile=idTile;
+        this.idTile=idTile;
         userID = uid;
     }
 

@@ -21,13 +21,26 @@
 
     <TextView
         android:id="@+id/name_text_view"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_weight="1"
+        android:layout_marginRight="16dp"
         android:fontFamily="sans-serif"
         android:textSize="16sp"
         android:text="@string/default_description"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/position_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/default_position"
+        android:textSize="16sp" />
 
 
 </LinearLayout>

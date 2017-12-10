@@ -15,4 +15,5 @@
     <string name="action_reset">Reset</string>
     <string name="no_tasks">You have no tasks.</string>
     <string name="no_available">There are no available tasks.</string>
+    <string name="default_position">0 0</string>
 </resources>

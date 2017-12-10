@@ -57,12 +57,15 @@ public class AddTaskController {
     }
 
     public void handleAddTask(MouseEvent event){
+
+
         String descriere=textArea.getText();
         double x=tile.getLayoutX();
         double y=tile.getLayoutY();
         String date= LocalDate.now().toString();
         User user=(User)tableView.getSelectionModel().getSelectedItem();
-        Task task=new Task(-1,descriere,date,null,0,tile.getId(),null);
+        int id = tile.getId();
+        Task task=new Task(-1,descriere,date,null,0,id,null);
         if(user!=null)
             task.setUserID(user.getId());
         taskService.add(task);

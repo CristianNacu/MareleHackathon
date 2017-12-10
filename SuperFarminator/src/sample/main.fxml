@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -15,66 +19,85 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <HBox prefHeight="475.0" prefWidth="910.0">
+      <VBox>
          <children>
-            <GridPane fx:id="gridPane" prefHeight="475.0" prefWidth="312.0">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin></GridPane>
-            <VBox onMouseClicked="#handleClick" prefHeight="475.0" prefWidth="266.0">
+            <HBox prefHeight="463.0" prefWidth="1050.0">
                <children>
-                  <ChoiceBox fx:id="choiceBoxType" prefHeight="68.0" prefWidth="323.0" value="iarba" />
-                  <ImageView fx:id="imageViewType" fitHeight="185.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true" />
-                  <CheckBox fx:id="checkBoxCreator" mnemonicParsing="false" prefHeight="101.0" prefWidth="325.0" text="CheckBox">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin></CheckBox>
+                  <GridPane fx:id="gridPane" prefHeight="475.0" prefWidth="312.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </GridPane>
+                  <VBox onMouseClicked="#handleClick" prefHeight="475.0" prefWidth="266.0">
+                     <children>
+                        <ChoiceBox fx:id="choiceBoxType" prefHeight="68.0" prefWidth="323.0" value="iarba" />
+                        <ImageView fx:id="imageViewType" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" />
+                        <RadioButton fx:id="radioButtonNone" mnemonicParsing="false" text="None" />
+                        <RadioButton fx:id="radioButtonSingle" mnemonicParsing="false" text="Single" />
+                        <RadioButton fx:id="radioButtonMultiple" mnemonicParsing="false" text="Multiple" />
+                        <Button fx:id="buttonRefresh" mnemonicParsing="false" onMouseClicked="#handleButtonRefresh" text="Refresh" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="480.0" prefWidth="651.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="59.0" prefWidth="300.0" text="Info:" textAlignment="CENTER">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label minHeight="100.0" minWidth="120.0" prefHeight="112.0" prefWidth="117.0" text="Type:">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textFieldType" minHeight="100.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label minHeight="100.0" minWidth="120.0" prefHeight="116.0" prefWidth="119.0" text="Position:">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textFieldPosition" minWidth="500.0" prefHeight="102.0" prefWidth="233.0" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tableViewTasks" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="columnDescription" prefWidth="282.0" text="Description" />
+                            <TableColumn fx:id="columnStartDate" prefWidth="127.0" text="StartDate" />
+                              <TableColumn fx:id="columnSlave" prefWidth="210.0" text="Slave" />
+                          </columns>
+                        </TableView>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="buttonAddUser" mnemonicParsing="false" onMouseClicked="#handleAddUser" text="Add User" />
+                              <Button fx:id="buttonAddTask" mnemonicParsing="false" onMouseClicked="#handleAddTask" text="Add Task" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox prefHeight="480.0" prefWidth="651.0">
+            </HBox>
+            <HBox prefHeight="287.0" prefWidth="1050.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="59.0" prefWidth="352.0" text="Info:" textAlignment="CENTER">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label minHeight="100.0" minWidth="120.0" prefHeight="112.0" prefWidth="117.0" text="Type:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="textFieldType" minWidth="500.0" prefHeight="108.0" prefWidth="236.0" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label minHeight="100.0" minWidth="120.0" prefHeight="116.0" prefWidth="119.0" text="Position:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="textFieldPosition" minWidth="500.0" prefHeight="102.0" prefWidth="233.0" />
-                     </children>
-                  </HBox>
-                  <TableView fx:id="tableViewTasks" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn fx:id="columnDescription" prefWidth="282.0" text="Description" />
-                      <TableColumn fx:id="columnStartDate" prefWidth="127.0" text="StartDate" />
-                        <TableColumn fx:id="columnSlave" prefWidth="210.0" text="Slave" />
-                    </columns>
-                  </TableView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="buttonAddUser" mnemonicParsing="false" onMouseClicked="#handleAddUser" text="Add User" />
-                        <Button fx:id="buttonAddTask" mnemonicParsing="false" onMouseClicked="#handleAddTask" text="Add Task" />
-                     </children>
-                  </HBox>
-               </children></VBox>
+                  <BarChart>
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <PieChart fx:id="pieChart" prefHeight="287.0" prefWidth="550.0" title="Angajatul Lunii" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </Pane>

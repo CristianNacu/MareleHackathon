@@ -53,7 +53,7 @@ public class TasksActivity extends AppCompatActivity {
       /* do what you need to do */
             refreshTasks();
       /* and here comes the "trick" */
-            handler.postDelayed(this, 5000);
+            handler.postDelayed(this, 10000);
         }
     };
 
@@ -199,7 +199,7 @@ public class TasksActivity extends AppCompatActivity {
         }).attachToRecyclerView(rvMyTasks);
 
         //refresh every x seconds
-        handler.postDelayed(runnable, 5000);
+        handler.postDelayed(runnable, 10000);
     }
 
     private void drawText(String text, Canvas c, RectF button, Paint p) {

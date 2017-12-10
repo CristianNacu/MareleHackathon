@@ -25,6 +25,7 @@ public class ClientTcp {
         codes.put("AddTask","111|111");//descr,dataStart,idParcela,idMuncitor
         codes.put("AllUsers","104|104");
         codes.put("AllRoles","105|105");
+        codes.put("UserStatistics","130|130");
         return codes;
     }
 

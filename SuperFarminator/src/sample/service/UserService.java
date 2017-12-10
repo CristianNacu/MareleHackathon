@@ -3,6 +3,7 @@ package sample.service;
 import sample.model.Task;
 import sample.model.User;
 import sample.model.Tile;
+import sample.model.UserStatistic;
 import sample.utils.ClientTcp;
 
 import java.io.BufferedWriter;
@@ -29,11 +30,31 @@ public class UserService {
     public void importUsersFromDB(){
         try {
             String result= ClientTcp.makeRequest(ClientTcp.requestCodes.get("AllUsers"));
+            if (result == null)
+                return;
             String[] tokens=result.split(";");
             list = parseTokens(tokens);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<UserStatistic> getUsersStatistics(){
+        ArrayList<UserStatistic> resultList=new ArrayList<>();
+        try {
+            String result=ClientTcp.makeRequest(ClientTcp.requestCodes.get("UserStatistics"));
+            if (result == null)
+                return null;
+            String[] userStatistic=result.split(";");
+            for(int i=0;i<userStatistic.length;i++){
+                int idUser=Integer.parseInt(userStatistic[i++]);
+                int nrTaskuri=Integer.parseInt(userStatistic[i]);
+                resultList.add(new UserStatistic(idUser,nrTaskuri));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return resultList;
     }
     private ArrayList<User> parseTokens(String[] tokens){
         ArrayList<User> list = new ArrayList<>();
@@ -49,7 +70,6 @@ public class UserService {
         return list;
     }
 
-    // TODO: getUserByID();
     public User getUserByID(int id){
         for (User user: list)
             if (user.getId() == id)

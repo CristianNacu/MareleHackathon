@@ -16,7 +16,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
 //
-        //System.out.println(ClientTcp.makeRequest("111|111|World|2016-01-11|15|4"));
+//        System.out.println(ClientTcp.makeRequest("130|130"));
 //        ClientTcp.requestCodes.get("UnfinishedTasks");
     }
 

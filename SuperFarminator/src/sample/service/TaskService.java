@@ -25,11 +25,13 @@ public class TaskService {
         importUnfinishedTasksFromDB();
     }
 
-    private void importUnfinishedTasksFromDB() {
+    public void importUnfinishedTasksFromDB() {
         try {
             String result=ClientTcp.makeRequest(ClientTcp.requestCodes.get("UnfinishedTasks"));
-            String[] tokens=result.split(";");
-            list = parseTokens(tokens);
+            if (result==null)
+                return;
+            String[] tokens=mySplit(result);
+            this.list = parseTokens(tokens);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,19 +39,21 @@ public class TaskService {
 
     private ArrayList<Task> parseTokens(String[] tokens){
         ArrayList<Task> list = new ArrayList<>();
-        for(int i=0;i<tokens.length;i++){
-            int id=Integer.parseInt(tokens[i++]);
-            String desc=tokens[i++];
-            String sdate=tokens[i++];
-            String edate=null;
-            Integer idUser=null;
-            if(!tokens[i++].equals(""))
-                idUser=Integer.parseInt(tokens[i-1]);
-            int state=1; i++;
-            int idParcela=Integer.parseInt(tokens[i++]);
-            Task task= new Task(id,desc,sdate,edate,state,idParcela,idUser);
-            i--;
-            list.add(task);
+        for(int i=0;i<tokens.length;i= i+6){
+            try {
+                int id = Integer.parseInt(tokens[i]);
+                String desc = tokens[i + 1];
+                String sdate = tokens[i + 2];
+                Integer idUser = null;
+                if (!tokens[i + 3].equals(""))
+                    idUser = Integer.parseInt(tokens[i + 3]);
+                int state = 1;
+                String edate = null;
+                int idParcela = Integer.parseInt(tokens[i + 5]);
+                Task task = new Task(id, desc, sdate, edate, state, idParcela, idUser);
+                list.add(task);
+            }
+            catch(Exception e){}
         }
         return list;
     }
@@ -61,7 +65,7 @@ public class TaskService {
             String result=ClientTcp.makeRequest(ClientTcp.requestCodes.get("UnfinishedTasksOnTile")+"|"+tile.getId());
             if(result==null)
                 return resultList;
-            String[] tokens=result.split(";");
+            String[] tokens=mySplit(result);
             resultList = parseTokens(tokens);
 
         } catch (IOException e) {
@@ -70,6 +74,9 @@ public class TaskService {
         return resultList;
     }
 
+    public String[] mySplit(String r){
+        return r.split(";", -1);
+    }
 
     public void add(Task task){
         list.add(task);//World|2016-01-11|15|4")
