@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Farminator</string>
+    <string name="farminator">Farminator</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="hello">Hello!</string>
+    <string name="default_number">-1</string>
+    <string name="default_description">Default description</string>
+    <string name="your_tasks">Your tasks:</string>
+    <string name="available_tasks">Available tasks:</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_reset">Reset</string>
+    <string name="no_tasks">You have no tasks.</string>
+    <string name="no_available">There are no available tasks.</string>
 </resources>

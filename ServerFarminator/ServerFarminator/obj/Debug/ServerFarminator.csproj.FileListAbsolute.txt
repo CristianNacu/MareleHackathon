@@ -1,0 +1,9 @@
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\bin\Debug\ServerFarminator.exe.config
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\bin\Debug\ServerFarminator.exe
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\bin\Debug\ServerFarminator.pdb
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\obj\Debug\ServerFarminator.csprojResolveAssemblyReference.cache
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\obj\Debug\ServerFarminator.csproj.CoreCompileInputs.cache
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\obj\Debug\ServerFarminator.exe
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\obj\Debug\ServerFarminator.pdb
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\bin\Debug\Database\Database1.mdf
+D:\hackaton\ServerFarminator\ServerFarminator\ServerFarminator\bin\Debug\Database\Database1_log.ldf
