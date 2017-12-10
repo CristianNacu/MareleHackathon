@@ -11,4 +11,8 @@
     <string name="available_tasks">Available tasks:</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_logout">Logout</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_reset">Reset</string>
+    <string name="no_tasks">You have no tasks.</string>
+    <string name="no_available">There are no available tasks.</string>
 </resources>

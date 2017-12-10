@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/linear">
 
         <TextView
             android:id="@+id/tv_hello"
@@ -37,8 +38,6 @@
             android:id="@+id/rv_my_tasks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
             android:overScrollMode="never"/>
 
         <TextView
@@ -57,8 +56,6 @@
             android:id="@+id/rv_available_tasks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
             android:overScrollMode="never"/>
 
     </LinearLayout>

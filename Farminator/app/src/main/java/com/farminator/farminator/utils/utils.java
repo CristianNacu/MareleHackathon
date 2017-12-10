@@ -1,5 +1,7 @@
 package com.farminator.farminator.utils;
 
+import android.util.Log;
+
 import com.farminator.farminator.Task;
 
 import java.util.ArrayList;
@@ -58,10 +60,20 @@ public final class Utils {
         }
 
         List<Task> l = new ArrayList<>();
+        try {
         String a[] = out.split(";");
-        for(int i=0;i<a.length;i+=2){
-            l.add(new Task(Integer.parseInt(a[i]),a[i+1],username));
+
+            for (int i = 0; i < a.length; i += 2) {
+                l.add(new Task(Integer.parseInt(a[i]), a[i + 1], username));
+            }
         }
+        catch (NumberFormatException e){
+            return new ArrayList<Task>();
+        }
+        catch (NullPointerException e){
+            return new ArrayList<Task>();
+        }
+
         return l;
     }
 
@@ -76,14 +88,64 @@ public final class Utils {
         }
 
         List<Task> l = new ArrayList<>();
+        try {
         String a[] = out.split(";");
-        for(int i=0;i<a.length;i+=2){
-            l.add(new Task(Integer.parseInt(a[i]),a[i+1],""));
+
+            for (int i = 0; i < a.length; i += 2) {
+                l.add(new Task(Integer.parseInt(a[i]), a[i + 1], ""));
+            }
         }
+        catch (NumberFormatException e){
+            return new ArrayList<Task>();
+        }
+        catch (NullPointerException e){
+            return new ArrayList<Task>();
+        }
+
         return l;
     }
 
+    public static void completeTask(int id){
+        String out=null;
+        try {
+            out = new ServerRequest().execute("5|5|"+id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void claimTask(int id, String username){
-        getAvailableTasks().get(id).setUsername(username);
+        String out=null;
+        try {
+            out = new ServerRequest().execute("4|4|"+id+"|"+username).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void undo(int id){
+        String out=null;
+        try {
+            out = new ServerRequest().execute("7|7|"+id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reset(int id){
+        String out=null;
+        try {
+            out = new ServerRequest().execute("6|6|-1").get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
