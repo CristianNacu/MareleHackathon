@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_username;
     EditText et_password;
     String username,password;
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         et_password = findViewById(R.id.et_password);
         et_username = findViewById(R.id.et_username);
+        toast = Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT);
 
         Button btn = findViewById(R.id.b_login);
 
@@ -43,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this, "Error!",
-                            Toast.LENGTH_SHORT).show();
+                    toast.setText("Error!");
+                    toast.show();
                 }
             }
         });

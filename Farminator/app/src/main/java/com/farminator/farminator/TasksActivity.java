@@ -46,6 +46,7 @@ public class TasksActivity extends AppCompatActivity {
     private int undoId;
     private Paint paint = new Paint();
     private Handler handler = new Handler();
+    private Toast toast;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -92,7 +93,13 @@ public class TasksActivity extends AppCompatActivity {
         availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
         rvAvailableTasks.setAdapter(availableTasksAdapter);
 
+        //disable scrolling
+        rvMyTasks.setNestedScrollingEnabled(false);
+        rvAvailableTasks.setNestedScrollingEnabled(false);
+
         refreshTasks();
+
+        toast = Toast.makeText(this,"",Toast.LENGTH_SHORT);
 
 
         //Swiping for available tasks
@@ -206,12 +213,16 @@ public class TasksActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (backPressed + 300 > System.currentTimeMillis()){
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("username", "");
+            editor.putString("password", "");
+            editor.apply();
             super.onBackPressed();
         }
         else{
-            Toast.makeText(getBaseContext(),
-                    "Press BACK twice to exit!", Toast.LENGTH_SHORT)
-                    .show();
+            toast.setText("Press BACK twice to exit!");
+            toast.show();
         }
         backPressed = System.currentTimeMillis();
     }
