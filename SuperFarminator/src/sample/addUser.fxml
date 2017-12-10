@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="507.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddUserController">
+    <children>
+        <Button fx:id="buttonAddUser" layoutX="289.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleAddUser" text="La munca !" />
+      <TextField fx:id="textFieldSurName" layoutX="242.0" layoutY="44.0" />
+      <TextField fx:id="textFieldFirstName" layoutX="242.0" layoutY="124.0" />
+      <TextField fx:id="textFieldUserName" layoutX="242.0" layoutY="205.0" />
+      <ChoiceBox fx:id="choiceBox" layoutX="242.0" layoutY="349.0" prefHeight="31.0" prefWidth="186.0" />
+      <Label layoutX="173.0" layoutY="49.0" text="Nume:" />
+      <Label layoutX="173.0" layoutY="129.0" text="Prenume:" />
+      <Label layoutX="173.0" layoutY="210.0" text="Username:" />
+      <Label layoutX="173.0" layoutY="286.0" text="Password:" />
+      <Label layoutX="173.0" layoutY="354.0" text="Rol" />
+      <PasswordField fx:id="textFieldPassword" layoutX="242.0" layoutY="281.0" />
+    </children>
+</Pane>
