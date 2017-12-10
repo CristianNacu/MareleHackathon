@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.farminator.farminator.utils.ServerRequest;
-import com.farminator.farminator.utils.Utils;
+import com.farminator.farminator.utils.MyUtils;
 
 import java.util.concurrent.ExecutionException;
 
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = et_username.getText().toString();
                 String password = et_password.getText().toString();
 
-                if(Utils.checkUser(username,password)){
+                if(MyUtils.checkUser(username,password)){
 
                     logIn(username,password);
                 }
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //SharedPreferences
         setupSharedPreferences();
-        if(Utils.checkUser(username,password)){
+        if(MyUtils.checkUser(username,password)){
             logIn(username,password);
         }
     }

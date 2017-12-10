@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.design.widget.Snackbar;
 
-import com.farminator.farminator.utils.Utils;
+import com.farminator.farminator.utils.MyUtils;
 
 import java.util.List;
 
@@ -78,7 +78,7 @@ public class TasksActivity extends AppCompatActivity {
         tvUsername.setText(spanString);
 
         //My tasks RecyclerView
-        myTasks = Utils.getMyTasks(username);
+        myTasks = MyUtils.getMyTasks(username);
         rvMyTasks = findViewById(R.id.rv_my_tasks);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvMyTasks.setLayoutManager(layoutManager);
@@ -86,7 +86,7 @@ public class TasksActivity extends AppCompatActivity {
         rvMyTasks.setAdapter(myTasksAdapter);
 
         //Available tasks RecyclerView
-        availableTasks = Utils.getAvailableTasks();
+        availableTasks = MyUtils.getAvailableTasks();
         rvAvailableTasks = findViewById(R.id.rv_available_tasks);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
         rvAvailableTasks.setLayoutManager(layoutManager2);
@@ -113,10 +113,10 @@ public class TasksActivity extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 int id = (int)viewHolder.itemView.getTag();
                 if(swipeDir==ItemTouchHelper.LEFT){
-                    Utils.claimTask(id,username);
+                    MyUtils.claimTask(id,username);
                 }
                 else{
-                    Utils.claimTask(id,username);
+                    MyUtils.claimTask(id,username);
                 }
                 //refresh lists
                 refreshTasks();
@@ -158,15 +158,15 @@ public class TasksActivity extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 final int id = (int)viewHolder.itemView.getTag();
                 if(swipeDir==ItemTouchHelper.LEFT){
-                    Utils.undo(id);
+                    MyUtils.undo(id);
                 }
                 else{
-                    Utils.completeTask(id);
+                    MyUtils.completeTask(id);
                     Snackbar mySnackbar = Snackbar.make(findViewById(R.id.linear),getString(R.string.action_undo),Snackbar.LENGTH_SHORT);
                     mySnackbar.setAction(R.string.action_undo, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Utils.undo(id);
+                            MyUtils.undo(id);
                             refreshTasks();
                         }
                     });
@@ -233,7 +233,7 @@ public class TasksActivity extends AppCompatActivity {
     }
 
     public void refreshTasks(){
-        myTasks = Utils.getMyTasks(username);
+        myTasks = MyUtils.getMyTasks(username);
         myTasksAdapter = new MyTasksAdapter(this, myTasks);
         rvMyTasks.setAdapter(myTasksAdapter);
         if(myTasksAdapter.getItemCount()==0){
@@ -246,7 +246,7 @@ public class TasksActivity extends AppCompatActivity {
             et.setText(R.string.your_tasks);
         }
 
-        availableTasks = Utils.getAvailableTasks();
+        availableTasks = MyUtils.getAvailableTasks();
         availableTasksAdapter = new MyTasksAdapter(this, availableTasks);
         rvAvailableTasks.setAdapter(availableTasksAdapter);
         if(availableTasksAdapter.getItemCount()==0){
@@ -277,7 +277,7 @@ public class TasksActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_reset:
-                Utils.reset(undoId);
+                MyUtils.reset(undoId);
                 refreshTasks();
                 return true;
         }

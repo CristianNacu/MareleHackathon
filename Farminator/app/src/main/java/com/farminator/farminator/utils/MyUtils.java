@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
  * Created by Sebastian on 09-Dec-17.
  */
 
-public final class Utils {
+public final class MyUtils {
     public static boolean checkUser(String username,String password){
         if(username==null || password==null || username.isEmpty() || password.isEmpty()){
             return false;
